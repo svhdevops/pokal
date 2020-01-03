@@ -10,17 +10,17 @@ Function init_globals()
 
 Function createDbConnection()
 {
-    $dbuser = "thp";
-    $dbpwd  = "";
+    $dbuser = "pokal";
+    $dbpwd  = "svhpokal";
     $dbname = "pokal";
-    $dbhost = "localhost";
+    $dbhost = "172.19.0.2"; // "pokal_db"; // "127.0.0.1";
 
     return mysqli_connect($dbhost, $dbuser, $dbpwd, $dbname);
 }
 
 Function getAllShootersByClass($klasse)
 {
-    $dbconn = createDbConnection() or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
 
     $result = mysqli_query($dbconn, "select m.Verein,s.Name,s.Serie1+s.Serie2 as Erg,s.Schuss11,s.Schuss12,s.Schuss13
         from dorfpokal_mannschaft as m,
@@ -37,7 +37,7 @@ Function getAllShootersByClass($klasse)
 
 Function getAllShooters()
 {
-    $dbconn = createDbConnection() or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
 
     $result = mysqli_query($dbconn, "select m.Verein,s.Name
         from dorfpokal_mannschaft as m,
@@ -54,7 +54,7 @@ Function getAllShooters()
 
 Function getAllShootersByTeam()
 {
-    $dbconn = createDbConnection() or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
 
     $result = mysqli_query($dbconn, "select m.Verein,s.Name,s.Serie1+s.Serie2 as Erg
         from dorfpokal_mannschaft as m,
@@ -71,7 +71,7 @@ Function getAllShootersByTeam()
 
 Function getTeamResults($klasse)
 {
-      $dbconn = createDbConnection() or die('Could not connect: ' . mysql_error());
+      $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
       $result = mysqli_query($dbconn, "
           SELECT m.Verein, sum(s.Erg) from dorfpokal_mannschaft as m
           JOIN ( SELECT n, MannschaftsID, Name, Erg FROM

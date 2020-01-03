@@ -3,7 +3,7 @@
     init_globals();
 
 // first run query
-    $dbconn = createDbConnection()or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection()or die('Could not connect: ' . mysqli_connect_error());
     $resultMannschaften = mysqli_query($dbconn,
       "select Verein from dorfpokal_mannschaft order by Verein;");
 //       "select m.Verein,k.Bezeichnung from dorfpokal_mannschaft as m, dorfpokal_klasse as k

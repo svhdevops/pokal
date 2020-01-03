@@ -1,7 +1,9 @@
 CREATE DATABASE pokal;
 
-CREATE USER pokal@localhost IDENTIFIED BY 'svhpokal';
-GRANT ALL PRIVILEGES ON pokal.* TO pokal@'localhost';
+-- CREATE USER pokal@'localhost' IDENTIFIED BY 'svhpokal';
+CREATE USER pokal@'%' IDENTIFIED BY 'svhpokal';
+-- GRANT ALL PRIVILEGES ON *.* TO pokal@'localhost';
+GRANT ALL PRIVILEGES ON pokal.* TO pokal@'%';
 FLUSH PRIVILEGES;
 
 USE pokal;
@@ -9,7 +11,7 @@ USE pokal;
 CREATE TABLE `dorfpokal_mannschaft` (
   `MannschaftsID` int(11) NOT NULL AUTO_INCREMENT,
   `Verein` varchar(255) COLLATE latin1_german1_ci NOT NULL,
-  `KlassenID` int(11) NOT NULL,
+  `KlassenID` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`MannschaftsID`)
 );
 
@@ -18,15 +20,15 @@ CREATE TABLE `dorfpokal_schuetze` (
   `SchuetzenID`   int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) COLLATE latin1_german1_ci NOT NULL,
   `KlassenID` int(8) NOT NULL,
-  `Serie1`   int(2) NOT NULL,
-  `Serie2`   int(2) NOT NULL,
-  `Schuss11` int(2) NOT NULL,
-  `Schuss12` int(2) NOT NULL,
-  `Schuss13` int(2) NOT NULL,
+  `Serie1`   int(2),
+  `Serie2`   int(2),
+  `Schuss11` int(2),
+  `Schuss12` int(2),
+  `Schuss13` int(2),
   PRIMARY KEY (`SchuetzenID`)
 );
 
-alter table dorfpokal_schuetze add unique (Name);      
+alter table dorfpokal_schuetze add unique (Name);
 
 CREATE TABLE `dorfpokal_klasse` (
   `KlassenID` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,7 +49,7 @@ FOR EACH ROW BEGIN
   IF weible > male then
     update dorfpokal_mannschaft set KlassenID=2 where MannschaftsID=NEW.MannschaftsID;
   else
-    update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=NEW.MannschaftsID;    
+    update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=NEW.MannschaftsID;
   END IF;
 END //
 DELIMITER ;
@@ -63,7 +65,7 @@ FOR EACH ROW BEGIN
   IF weible > male then
     update dorfpokal_mannschaft set KlassenID=2 where MannschaftsID=NEW.MannschaftsID;
   else
-    update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=NEW.MannschaftsID;    
+    update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=NEW.MannschaftsID;
   END IF;
 END //
 DELIMITER ;
@@ -93,3 +95,4 @@ DELIMITER ;
 -- alter table dorfpokal_schuetze add CONSTRAINT ckMaxFive CHECK (fnMaxFive(MannschaftsID) = 1);
 
 show tables;
+show grants;
