@@ -13,7 +13,7 @@ Function createDbConnection()
     $dbuser = "pokal";
     $dbpwd  = "svhpokal";
     $dbname = "pokal";
-    $dbhost = "172.19.0.2"; // "pokal_db"; // "127.0.0.1";
+    $dbhost = "pokal_db"; // "127.0.0.1";
 
     return mysqli_connect($dbhost, $dbuser, $dbpwd, $dbname);
 }
