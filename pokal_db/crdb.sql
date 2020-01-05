@@ -1,8 +1,6 @@
 CREATE DATABASE pokal;
 
--- CREATE USER pokal@'localhost' IDENTIFIED BY 'svhpokal';
 CREATE USER pokal@'%' IDENTIFIED BY 'svhpokal';
--- GRANT ALL PRIVILEGES ON *.* TO pokal@'localhost';
 GRANT ALL PRIVILEGES ON pokal.* TO pokal@'%';
 FLUSH PRIVILEGES;
 
@@ -86,13 +84,25 @@ FOR EACH ROW BEGIN
   DECLARE numSch INT;
   SELECT count(SchuetzenID) INTO numSch FROM dorfpokal_schuetze WHERE MannschaftsID=NEW.MannschaftsID;
   IF numSch = 5 then
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Mannschaft hat schon 5 Schützen';
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Schütze kann nicht zu dieser Mannschaft hinzugefügt werden, da diese schon 5 Schützen hat.';
   END IF;
 END //
 DELIMITER ;
 
 -- ERROR 1901 (HY000) at line 80: Function or expression '`fnMaxFive`()' cannot be used in the CHECK clause of `ckMaxFive`
 -- alter table dorfpokal_schuetze add CONSTRAINT ckMaxFive CHECK (fnMaxFive(MannschaftsID) = 1);
+
+-- instead use: 
+DELIMITER //
+CREATE TRIGGER trMaxFiveUpd BEFORE UPDATE ON dorfpokal_schuetze
+FOR EACH ROW BEGIN
+  DECLARE numSch INT;
+  SELECT count(SchuetzenID) INTO numSch FROM dorfpokal_schuetze WHERE MannschaftsID=NEW.MannschaftsID;
+  IF numSch = 5 then
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Schütze kann nicht in diese Mannschaft verlegt werden, da diese schon 5 Schützen hat.';
+  END IF;
+END //
+DELIMITER ;
 
 show tables;
 show grants;
