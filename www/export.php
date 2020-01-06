@@ -2,6 +2,8 @@
     include( "db_func.php" );
     init_globals();
 
+    // export the content of the database so that it can be loaded again later
+
     echo "<h3>Datenbankexport</h3>";
 
     // this would require mysql client on php container
@@ -28,11 +30,29 @@
     // print the stuff in a way that it can be used for import directly
     echo "<pre>";
     $idx = 0;
+    $num_fields = $teams->field_count;  
     echo "INSERT INTO dorfpokal_mannschaft VALUES <br>";
     while($row = $teams->fetch_row()) 
     {
 	$idx++;
-	echo "(" . $row[0] . "," . $row[1] . "," . $row[2] . ")";
+	$cont=" (";
+	for($i=0; $i<$num_fields; $i++)
+	{
+	    // $row[$j] = str_replace("\n","\\n", addslashes($row[$j]) );
+	    if (isset($row[$i]))
+	    {
+		$cont .= '"'.$row[$i].'"'; 
+	    }else {
+		$cont .= 'NULL';
+	    }
+	    if ($i<($num_fields-1))
+	    {
+		$cont .= ',';
+	    }
+
+	}
+	$cont .= ")";
+	echo $cont;
 	if($idx < $num_teams) echo ",";
 	else echo ";";
 	echo "<br>";
@@ -40,12 +60,29 @@
     echo "<br>";
 
     $idx = 0;
+    $num_fields = $shooters->field_count;  
     echo "INSERT INTO dorfpokal_schuetze VALUES <br>";
     while($row = $shooters->fetch_row()) 
     {
 	$idx++;
-	echo "(" . $row[0] . "," . $row[1] . "," . $row[2] . "," . $row[3] . "," . $row[4] . "," 
-		 . $row[5] . "," . $row[6] . "," . $row[7] . "," . $row[8] . ")";
+	$cont=" (";
+	for($i=0; $i<$num_fields; $i++)
+	{
+	    // $row[$j] = str_replace("\n","\\n", addslashes($row[$j]) );
+	    if (isset($row[$i]))
+	    {
+		$cont .= '"'.$row[$i].'"'; 
+	    }else {
+		$cont .= 'NULL';
+	    }
+	    if ($i<($num_fields-1))
+	    {
+		$cont .= ',';
+	    }
+
+	}
+	$cont .= ")";
+	echo $cont;
 	if($idx < $num_shooter) echo ",";
 	else echo ";";
 	echo "<br>";
