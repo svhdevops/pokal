@@ -26,12 +26,12 @@ echo '
     echo '
     </SELECT></td></tr>
     <tr>
-    <td> 1. Serie </td><td> <input type="number" maxlength="2" max="50" id="ser_1"></td>
-    <td> 2. Serie </td><td> <input type="number" maxlength="2" max="50" id="ser_2"></td></tr>
+    <td> 1. Serie </td><td> <input type="number" maxlength="2" max="50" name="ser_1" id="ser_1"></td>
+    <td> 2. Serie </td><td> <input type="number" maxlength="2" max="50" name="ser_2" id="ser_2"></td></tr>
     <tr>
-    <td>11. Schuss </td><td> <input type="number" maxlength="2" max="10" id="s_11"></td>
-    <td>12. Schuss </td><td> <input type="number" maxlength="2" max="10" id="s_12"></td>
-    <td>13. Schuss </td><td> <input type="number" maxlength="2" max="10" id="s_13"></td></tr>
+    <td>11. Schuss </td><td> <input type="number" maxlength="2" max="10" name="s_11" id="s_11"></td>
+    <td>12. Schuss </td><td> <input type="number" maxlength="2" max="10" name="s_12" id="s_12"></td>
+    <td>13. Schuss </td><td> <input type="number" maxlength="2" max="10" name="s_13" id="s_13"></td></tr>
     </table>
     <input type="submit" value="Speichern">
 </FORM>
