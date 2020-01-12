@@ -347,4 +347,12 @@ Function switchSliderPage($pageTitle)
     ');
 }
 
+// check string for characters that are not allowed and abort if some are found
+Function sanitizeInput($sql)
+{
+  if (strpos($sql, ';')  !== false) die("Die Eingabe enthält ungültige Zeichen: ;");
+  if (strpos($sql, '\\') !== false) die("Die Eingabe enthält ungültige Zeichen: \\");
+  if (strpos($sql, '\'') !== false) die("Die Eingabe enthält ungültige Zeichen: '");
+  if (strpos($sql, '*')  !== false) die("Die Eingabe enthält ungültige Zeichen: *");
+}
 ?>
