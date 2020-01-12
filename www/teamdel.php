@@ -11,6 +11,8 @@
     printPageHeader();
     echo '<body>
       <h2>Mannschaft löschen</h2>
+      <span class="warn">Achtung: alle Schützen der Mannschaft werden ebenfalls gelöscht.<br></span>
+      <br>
       <FORM NAME="Teamdel" action="teamdel_commit.php" method="post">
       Mannschaft <SELECT NAME="mannschaft">';
 
