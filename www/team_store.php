@@ -8,6 +8,7 @@
     // store submtted values
     $dbconn = createDbConnection() or die('Could not connect: ' . mysql_error());
 
+    sanitizeInput($_POST["name"]);
     $sql = 'INSERT INTO dorfpokal_mannschaft (Verein) VALUES ( "'. $_POST["name"] . '" )';
 
     if ($dbconn->query($sql) === TRUE) {
@@ -18,7 +19,7 @@
     }
     mysqli_close($dbconn);
 
-    echo '<a href="team.php">Weitere Mannschaft anlegen</a><br>
+    echo '<hr><a href="team.php">Weitere Mannschaft anlegen</a><br>
     <a href="index.html">Zurück zur Auswahl</a><br>
     </body>
       </html>';
