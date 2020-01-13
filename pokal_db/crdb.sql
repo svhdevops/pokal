@@ -23,7 +23,11 @@ CREATE TABLE `dorfpokal_schuetze` (
   `Schuss11` int(2),
   `Schuss12` int(2),
   `Schuss13` int(2),
-  PRIMARY KEY (`SchuetzenID`)
+  PRIMARY KEY (`SchuetzenID`),
+  CONSTRAINT `ref_id` 
+    FOREIGN KEY (Mannschaftsid)
+    REFERENCES dorfpokal_mannschaft (Mannschaftsid)
+    ON DELETE CASCADE
 );
 
 alter table dorfpokal_schuetze add unique (Name);
