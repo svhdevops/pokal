@@ -3,7 +3,7 @@
     init_globals();
 
 // first run query to get all teams
-    $dbconn = createDbConnection()or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection()or die('Could not connect: ' . mysqli_error());
     $resultMannschaften = mysqli_query($dbconn, "select MannschaftsID,Verein from `dorfpokal_mannschaft` order by Verein ");
     mysqli_close($dbconn);
 
@@ -13,7 +13,7 @@ echo '
 <body>
 <h2>Neues Ergebnis eintragen</h2>
 <FORM NAME="ergebnis" action="result_store.php" method="post">
-    <table>
+    <table  class="input-table" >
     <tr><td>Name</td>
     <td><select id="schuetze" name="schuetze">
     </select></td>
