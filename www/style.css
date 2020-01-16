@@ -14,7 +14,7 @@ body     {font-family: Arial; font-size: 12px; line-height: 16px;}
 
 table    {table-layout: auto; width: 100%; background-color: #ffffff;}
 tr       {border: 1px; margin: 0px; padding: 0px;}
-td       {color: #000000; font-family: Arial; text-align: left; border: 1px; margin: 0px; padding: 0px; font-size: 12px; line-height: 16px;}
+td       {color: #000000; font-family: Arial; text-align: left; border: 1px; margin: 0px; padding: 0px; font-size: 12px; line-height: 16px; overflow: hidden; white-space: nowrap; }
 th       {color: #000000; font-family: Arial; text-align: left; border: 1px; margin: 0px; padding: 0px; font-size: 12px; line-height: 16px;}
 
 .warn    { border: 2px solid red; padding: 5px; margin: 10px; margin-bottom: 30px; }
@@ -27,66 +27,9 @@ th       {color: #000000; font-family: Arial; text-align: left; border: 1px; mar
 
 .input-table { table-layout: auto; width: 300px; background-color: #ffffff;}
 
-.index-table { table-layout: fixed; width: 540px; background-color: #ffffff;}
+.index-table { table-layout: fixed; width: 640px; background-color: #ffffff;}
 
 .css-table-background   {background-color: #ffffff;}
 .css-ticker-table       {position: absolute; top: 0px; left: 0px; background-color: #ffffff;}
 
-.css-td-titel-1-l       {color: #ffffff; background-color: #444444; padding-left: 5px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px; height: 18px; text-align:   left; font-weight:   bold; font-size: 12px; margin: 0px; line-height: 16px;}
-.css-td-titel-2-l       {color: #ffffff; background-color: #777777; padding-left: 5px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px; height: 18px; text-align:   left; font-weight:   bold; font-size: 12px; margin: 0px; line-height: 16px;}
 
-.css-druck-td-titel-1-l     {color: #ffffff; background-color: #444444; padding-left: 1mm; padding-right: 0mm; padding-top: 0mm; padding-bottom: 0mm; height: 4mm; text-align:   left; font-weight:   bold; font-size: 2.5mm; margin: 0mm;}
-.css-druck-td-titel-2-l     {color: #ffffff; background-color: #777777; padding-left: 1mm; padding-right: 0mm; padding-top: 0mm; padding-bottom: 0mm; height: 4mm; text-align:   left; font-weight:   bold; font-size: 2.5mm; margin: 0mm;}
-
-.css-td-inhalt-1b-l     {background-color: #dddddd; padding-left: 5px; padding-right: 5px; padding-top: 0px; padding-bottom: 0px; height: 18px; text-align:   left; font-weight:   bold; font-size: 12px; margin: 0px; line-height: 16px;}
-.css-td-inhalt-2b-l     {background-color: #eeeeee; padding-left: 5px; padding-right: 5px; padding-top: 0px; padding-bottom: 0px; height: 18px; text-align:   left; font-weight:   bold; font-size: 12px; margin: 0px; line-height: 16px;}
-
-.css-td-textarea-1-l    {background-color: #dddddd; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;               text-align:   left; font-weight: normal; font-size: 12px; margin: 0px; line-height: 16px; vertical-align: top;}
-.css-td-textarea-2-l    {background-color: #eeeeee; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;               text-align:   left; font-weight: normal; font-size: 12px; margin: 0px; line-height: 16px; vertical-align: top;}
-
-.css-ip-radio-1         {margin: -2px; height: 10px;}
-.css-ip-checkbox-1      {position: relative; top: 2px;                                    padding: 0px; margin: 0px; height: 12px;}
-.css-ip-select-1        {font-size: 12px; line-height: 16px;                                                                               margin-left: 2px; margin-right: 2px; margin-top: 1px; margin-bottom: 1px; height: 16px; border: 0px; text-align:   left;}
-.css-ip-text-0-l        {font-size: 12px; line-height: 16px; padding-left: 5px; padding-right: 5px; padding-top: 0px; padding-bottom: 0px; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; height: 14px; border: 0px; text-align:   left; background-color: transparent;}
-.css-ip-text-0-c        {font-size: 12px; line-height: 16px; padding-left: 5px; padding-right: 5px; padding-top: 0px; padding-bottom: 0px; margin-left: 2px; margin-right: 2px; margin-top: 2px; margin-bottom: 2px; height: 14px; border: 0px; text-align: center; background-color: transparent;}
-
-.css-a-button-1-c       {font-size: 12px; line-height: 14px; padding-left: 5px; padding-right: 5px; padding-top: 0px; padding-bottom: 0px; border: 2px solid #97876c; height: 14px; text-align: center; font-weight: bold; background-image: url(http://speicher.schuetzenverein-hailfingen.de/images/allgemein/hintergrund_braun.gif);}
-
-.navigation_inhalt_text_a  {font-size: 16px; line-height: 20px; font-weight:   bold; vertical-align: middle; text-align: center;}
-.navigation_inhalt_text_b  {font-size: 12px; line-height: 16px; font-weight: normal; vertical-align:    top; text-align: center;}
-
-.navigation_haupt1       {color: #77674c; font-size: 13px; line-height: 14px; font-weight: bold; letter-spacing: 0px; word-spacing: 0px; text-align: left;}
-.navigation_haupt1:hover {color: #4a6f31; font-size: 13px; cursor: pointer;}
-
-.navigation_inhalt0  {font-size: 12px; line-height: 16px; font-weight: bold; letter-spacing: 0px; word-spacing: 0px; text-align: center; background-image: url(http://speicher.naturfotografie-tomschi.de/images/allgemein/hintergrund_dunkelbraun.gif);}
-.navigation_inhalt1  {font-size: 12px; line-height: 16px; font-weight: bold; letter-spacing: 0px; word-spacing: 0px; text-align: center; background-image: url(http://speicher.naturfotografie-tomschi.de/images/allgemein/hintergrund_dunkelbraun.gif);}
-
-.link1       {color: #77674c; font-weight: bold; letter-spacing: 0px; word-spacing: 0px; text-align: center;}
-.link1:hover {color: #4a6f31; cursor: pointer;}
-.link2       {color: #000000; font-weight: bold; letter-spacing: 0px; word-spacing: 0px; text-align: center;}
-.link2:hover {color: #4a6f31; cursor: pointer;}
-
-.link               {font-weight: bold;}
-
-.css-span-email   {unicode-bidi: bidi-override; direction: rtl;}
-
-.fehlerausgabe    {font-size: 14px; line-height: 18px; font-weight: bold; color: #ff0000; text-align: center;}
-.erfolgausgabe    {font-size: 14px; line-height: 18px; font-weight: bold; color: #00ff00; text-align: center;}
-.css-td-marquee   {text-align: center; vertical-align: middle; padding: 0px; margin: 0px; font-size: 12px; line-height: 14px;}
-
-.css-einblendung1_div {background-color: #e2555b; position: absolute; display: none; z-index: 10;}
-
-.css-seiteninhalt-gross  {font-size: 41px; line-height: 45px;}
-.css-seiteninhalt-mittel {font-size: 28px; line-height: 32px;}
-
-.css-seiteninhalt-ueberschrift1  {font-size: 14px; line-height: 14px; font-weight: bold; text-decoration: underline;}
-.css-seiteninhalt-ueberschrift2  {font-size: 12px; line-height: 12px; font-weight: bold; text-decoration: underline;}
-
-.inhalt_ueberschrift2  {border: 2px solid #ffffff; padding-top: 2px; padding-left: 5px; padding-right: 5px; padding-bottom: 2px; color: #ffffff; background-color: #777777; font-family: Arial; font-size: 12px; line-height: 14px; font-weight:   bold; margin-top: 10px; margin-bottom: 5px;}
-.inhalt_ueberschrift3  {border: 2px solid #ffffff; padding-top: 2px; padding-left: 5px; padding-right: 5px; padding-bottom: 2px; color: #ffffff; background-color: #999999; font-family: Arial; font-size: 12px; line-height: 14px; font-weight:   bold; margin-top: 10px; margin-bottom: 5px;}
-
-.hauptleiste_links_websitestatus {font-size: 10px; line-height: 11px; text-align: center;}
-.hauptleiste_oben  {padding-top: 5px; font-size: 20px; color: #888888; line-height: 20px; text-align: center; z-index: 1;}
-.hauptleiste_unten {padding-top: 4px; font-size: 20px; color: #888888; line-height: 20px; text-align: center; z-index: 1;}
-
-.minileiste_oben          {padding-top: 2px; font-size: 12px; line-height: 14px; text-align: center; z-index: 20;}
