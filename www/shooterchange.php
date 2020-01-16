@@ -14,7 +14,7 @@ echo '
 <body>
 <h2>Schütze in andere Mannschaft verlegen</h2>
 <FORM NAME="ergebnis" action="shooterchange_commit.php" method="post">
-    <table style="table-layout:fixed; width:200px">
+    <table style="table-layout:auto; width:300px">
     <tr><td>Mannschaft</td>
     <td><SELECT id="mannschaft">';
     while($mannschaft = mysqli_fetch_array($resultMannschaften, MYSQLI_ASSOC))
