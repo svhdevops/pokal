@@ -28,6 +28,7 @@
       <input type="submit" value="Speichern">
 
       </FORM><hr>
+      <p> <a href="schuetze.php">Neuen Schützen anlegen</a></p>
       <p> <a href="index.html">Zurück zur Auswahl</a><br></p>
       </body>
       </html>';
