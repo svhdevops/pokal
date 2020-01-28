@@ -19,7 +19,9 @@
     }
     mysqli_close($dbconn);
 
-    echo '<hr><a href="team.php">Weitere Mannschaft anlegen</a><br>
+    echo '<hr>
+    <a href="team.php">Weitere Mannschaft anlegen</a><br>
+    <a href="schuetze.php">Neuen Schützen anlegen</a><br>
     <a href="index.html">Zurück zur Auswahl</a><br>
     </body>
       </html>';
