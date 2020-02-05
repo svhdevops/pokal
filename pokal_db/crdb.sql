@@ -102,7 +102,7 @@ CREATE TRIGGER trMaxFiveUpd BEFORE UPDATE ON dorfpokal_schuetze
 FOR EACH ROW BEGIN
   DECLARE numSch INT;
   SELECT count(SchuetzenID) INTO numSch FROM dorfpokal_schuetze WHERE MannschaftsID=NEW.MannschaftsID;
-  IF numSch = 5 then
+  IF numSch = 5 and OLD.MannschaftsID != NEW.MAnnschaftsID then
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Schütze kann nicht in diese Mannschaft verlegt werden, da diese schon 5 Schützen hat.';
   END IF;
 END //
