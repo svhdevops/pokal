@@ -40,6 +40,15 @@ CREATE TABLE `dorfpokal_klasse` (
 
 INSERT INTO `dorfpokal_klasse` VALUES(1,'Schützenklasse'),(2,'Damenklasse');
 
+CREATE TABLE `admin` (
+  `status` BOOL NOT NULL,
+  `since` TIMESTAMP     
+    DEFAULT CURRENT_TIMESTAMP
+    ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin(status) VALUES(FALSE);
+
 DELIMITER //
 CREATE TRIGGER trAutoTeam AFTER INSERT ON dorfpokal_schuetze
 FOR EACH ROW BEGIN
