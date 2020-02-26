@@ -13,9 +13,9 @@
 
     if ($dbconn->query($sql) === TRUE) {
 	echo '<h2>Schütze angelegt</h2>';
-	echo 'Name: '.$_POST["name"].', '.$_POST["vorname"].'<br>MannschaftsID=' . $_POST["mannschaft"] . '<br>';
+	echo 'Name: '.$_POST["name"].', '.$_POST["vorname"].'<br>MannschaftsID: ' . $_POST["mannschaft"] . '<br>';
     } else {
-	echo "Error: " . $sql . "<br><h3>" . $dbconn->error . "</h3><hr>";
+	echo "Error: " . $sql . "<br><h3>" . $dbconn->error . "</h3>";
     }
     mysqli_close($dbconn);
 
