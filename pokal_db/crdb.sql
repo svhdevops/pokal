@@ -10,7 +10,8 @@ CREATE TABLE `dorfpokal_mannschaft` (
   `MannschaftsID` int(11) NOT NULL AUTO_INCREMENT,
   `Verein` varchar(255) COLLATE latin1_german1_ci NOT NULL,
   `KlassenID` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`MannschaftsID`)
+  PRIMARY KEY (`MannschaftsID`),
+  unique (`Verein`)
 );
 
 CREATE TABLE `dorfpokal_schuetze` (
@@ -24,13 +25,13 @@ CREATE TABLE `dorfpokal_schuetze` (
   `Schuss12` int(2),
   `Schuss13` int(2),
   PRIMARY KEY (`SchuetzenID`),
+  unique (`Name`),
   CONSTRAINT `ref_id` 
     FOREIGN KEY (Mannschaftsid)
     REFERENCES dorfpokal_mannschaft (Mannschaftsid)
     ON DELETE CASCADE
 );
 
-alter table dorfpokal_schuetze add unique (Name);
 
 CREATE TABLE `dorfpokal_klasse` (
   `KlassenID` int(11) NOT NULL AUTO_INCREMENT,
