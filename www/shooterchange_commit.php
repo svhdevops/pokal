@@ -11,11 +11,11 @@
     if ($dbconn->query($sql) === TRUE) {
 	echo '<h2>Schütze mit ID '.$_POST["schuetze"] .' in Mannschaft mit ID '.$_POST["newteam"].' verlegt.</h2>';
     } else {
-	echo "Error: " . $sql . "<br><h3>" . $dbconn->error . "</h3><hr>";
+	echo "Error: " . $sql . "<br><h3>" . $dbconn->error . "</h3>";
     }
     mysqli_close($dbconn);
 
-    echo '<br>
+    echo '<hr>
     <a href="schuetze.php">Weiteren Schützen anlegen</a><br>
     <a href="team.php">Neue Mannschaft anlegen</a><br>
     <a href="index.html">Zurück zur Auswahl</a><br>
