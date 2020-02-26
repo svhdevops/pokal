@@ -2,6 +2,7 @@ version: '3'
 services:
   pokal_web:
     image: nginx:alpine
+    container_name: pokal_web
     ports:
       - "80:80"
     volumes:
@@ -11,9 +12,11 @@ services:
       - pokal_php
   pokal_php:
     image: pokal_php
+    container_name: pokal_php
     volumes:
       - ./www:/www
   pokal_db:
     image: pokal_db
+    container_name: pokal_db
     environment:
       MYSQL_ROOT_PASSWORD: svhpokal
