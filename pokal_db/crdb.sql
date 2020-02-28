@@ -32,7 +32,6 @@ CREATE TABLE `dorfpokal_schuetze` (
     ON DELETE CASCADE
 );
 
-
 CREATE TABLE `dorfpokal_klasse` (
   `KlassenID` int(11) NOT NULL AUTO_INCREMENT,
   `Bezeichnung` varchar(32) COLLATE latin1_german1_ci NOT NULL,
@@ -64,9 +63,7 @@ FOR EACH ROW BEGIN
     update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=NEW.MannschaftsID;
   END IF;
 END //
-DELIMITER ;
 
-DELIMITER //
 CREATE TRIGGER trAutoTeamUpd AFTER UPDATE ON dorfpokal_schuetze
 FOR EACH ROW BEGIN
   DECLARE male INT;
@@ -79,20 +76,24 @@ FOR EACH ROW BEGIN
   else
     update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=NEW.MannschaftsID;
   END IF;
-END //
-DELIMITER ;
 
-DELIMITER //
+  select count(KlassenID) into weible from dorfpokal_schuetze where MannschaftsID=OLD.MannschaftsID and KlassenID=2;
+  select count(KlassenID) into male from dorfpokal_schuetze where MannschaftsID=OLD.MannschaftsID and KlassenID=1;
+
+  IF weible > male then
+    update dorfpokal_mannschaft set KlassenID=2 where MannschaftsID=OLD.MannschaftsID;
+  else
+    update dorfpokal_mannschaft set KlassenID=1 where MannschaftsID=OLD.MannschaftsID;
+  END IF;
+END //
+
 CREATE FUNCTION fnMaxFive (teamID INT) RETURNS INT
 BEGIN
   DECLARE numSch INT;
   SELECT count(SchuetzenID) INTO numSch FROM dorfpokal_schuetze WHERE MannschaftsID=teamID;
   RETURN IF(numSch < 5, 1, 0);
 END //
-DELIMITER ;
 
-
-DELIMITER //
 CREATE TRIGGER trMaxFive BEFORE INSERT ON dorfpokal_schuetze
 FOR EACH ROW BEGIN
   DECLARE numSch INT;
@@ -101,13 +102,11 @@ FOR EACH ROW BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Schütze kann nicht zu dieser Mannschaft hinzugefügt werden, da diese schon 5 Schützen hat.';
   END IF;
 END //
-DELIMITER ;
 
 -- ERROR 1901 (HY000) at line 80: Function or expression '`fnMaxFive`()' cannot be used in the CHECK clause of `ckMaxFive`
 -- alter table dorfpokal_schuetze add CONSTRAINT ckMaxFive CHECK (fnMaxFive(MannschaftsID) = 1);
 
 -- instead use: 
-DELIMITER //
 CREATE TRIGGER trMaxFiveUpd BEFORE UPDATE ON dorfpokal_schuetze
 FOR EACH ROW BEGIN
   DECLARE numSch INT;
