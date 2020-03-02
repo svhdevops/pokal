@@ -19,6 +19,9 @@ th       {color: #000000; font-family: Arial; text-align: left; border: 1px; mar
 
 .warn    { border: 2px solid red; padding: 5px; margin: 10px; margin-bottom: 30px; }
 
+.mainbutton { width:250px; padding: 1px; margin: 2px; }
+.maincolumn    { float: left; width: 33%; }
+
 .pagecolumn    { float: left; width: 50%; }
 .cell-teamname { color: #ffffff; font-family: Arial; font-size: 12px; font-weight: bold; line-height: 16px; padding-left: 3px; padding-right: 3px; background-color: #BB5500; border: 0px; }
 .cell-shootername { border: 0px; padding-left: 5px; }
@@ -26,8 +29,6 @@ th       {color: #000000; font-family: Arial; text-align: left; border: 1px; mar
 .cell-place    { border: 0px; text-align: right; padding-left: 0px; padding-right: 0px; }
 
 .input-table { table-layout: auto; width: 300px; background-color: #ffffff;}
-
-.index-table { table-layout: fixed; width: 640px; background-color: #ffffff;}
 
 .css-table-background   {background-color: #ffffff;}
 .css-ticker-table       {position: absolute; top: 0px; left: 0px; background-color: #ffffff;}
