@@ -9,6 +9,7 @@
 
 // now create some simple html
     printPageHeader();
+    $teamid = $_GET["teamid"];
     echo '<body>
       <h2>Neuen Schützen anlegen</h2>
       <FORM NAME="Schuetze" action="schuetze_store.php" method="post">
@@ -17,7 +18,12 @@
 
     while($klasse = mysqli_fetch_array($result, MYSQLI_ASSOC))
     {
-	     print ("<OPTION VALUE=".$klasse['MannschaftsID'].">".$klasse['Verein']."\n");
+	     print ("<OPTION VALUE=".$klasse['MannschaftsID']);
+       if($klasse['MannschaftsID'] == $teamid)
+       {
+         print(' SELECTED="true"');
+       }
+       print (">".$klasse['Verein']."\n");
     }
 
     echo '</SELECT></td></tr>
@@ -42,4 +48,5 @@
       <a href="index.html">Zurück zur Auswahl</a><br>
       </body>
       </html>';
+
 ?>
