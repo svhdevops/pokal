@@ -8,13 +8,15 @@ services:
     volumes:
       - ./www:/www
       - ./config/site.conf:/etc/nginx/conf.d/default.conf
-    links:
+    depends_on:
       - pokal_php
   pokal_php:
     image: pokal_php
     container_name: pokal_php
     volumes:
       - ./www:/www
+    depends_on:
+      - pokal_db
   pokal_db:
     image: pokal_db
     container_name: pokal_db
