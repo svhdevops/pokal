@@ -12,9 +12,11 @@
     $teamid = $_GET["teamid"];
     echo '<body>
       <h2>Neuen Schützen anlegen</h2>
+      <table class="input-table">
+      <tr><td><table>
       <FORM NAME="Schuetze" action="schuetze_store.php" method="post">
-      <table class="input-table" >
-      <tr><td>Mannschaft</td><td> <SELECT NAME="mannschaft">';
+      <table >
+      <tr><td>Mannschaft</td><td> <SELECT id="mannschaft" NAME="mannschaft">';
 
     while($klasse = mysqli_fetch_array($result, MYSQLI_ASSOC))
     {
@@ -40,13 +42,47 @@
       </fieldset>
       </td></tr>
       <tr><td></td>
-      <td> <input type="submit" value="Speichern"></td><td>
+      <td> <input type="submit" value="Speichern"></td></tr>
       </table>
-      </FORM>
+      </FORM></td><td id="teamlist" valign=top>
+      <b>Mannschaftsmitglieder</b><ul>
+      <li> - </li>
+      </ul></td></tr></table>
       <hr>
       <a href="team.php">Neue Mannschaft anlegen</a><br>
       <a href="index.html">Zurück zur Auswahl</a><br>
-      </body>
-      </html>';
 
+<script src="jquery.js"></script>
+<script>
+// Listens to the event that is trigerred by selecting the Mannschaft and calls the function to load team members
+// and update the member list
+$("#mannschaft").on(\'change\', function(){
+  var selected = $(this).children(":selected").val();
+  //Calls the function and passes to it the selection as a parameter.
+  loadMannschaft(selected);
+});
+
+// use jQuery.post to transfer the id of the selected team to the server side,
+// and get a list of team members back
+function loadMannschaft(selected){
+  var box = $(\'#teamlist\');
+  $.post(\'loadTeamList.php\', {mID : selected} , function(data) {
+    // transforms the returned data to proper HTML
+    var text = "<b>Mannschaftsmitglieder:</b><ul>";
+    var arr = data.split("\n");
+    var i;
+    for(i=0; i < arr.length - 1; i++) {
+        text += "<li>" + arr[i];
+    }
+    text += "</ul>";
+    box.html(text);
+  });
+}
+
+//Calls to the function when the page loads.
+$(window).on(\'load\', loadMannschaft($("#mannschaft").children(":selected").val()));
+</script>
+
+</body>
+</html>';
 ?>
