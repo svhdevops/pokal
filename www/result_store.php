@@ -15,7 +15,7 @@
 
     if ($dbconn->query($sql) === TRUE) {
         echo '<h2>Ergebnis eingetragen</h2>';
-        echo '-> SchützenID='.$_POST["schuetze"].'<br>';
+        echo 'Serie 1 ' . $_POST["ser_1"] . "<br>Serie 2 " . $_POST["ser_2"] .'<br>SchützenID '.$_POST["schuetze"].'<br>';
     } else {
         echo "Error: " . $sql . "<br>" . $dbconn->error;
     }
