@@ -1,11 +1,18 @@
 <?php
+
+/**
+ * Automatically flip through all result listings. Each result page is shown for 
+ * a specific amount of time. All pages are periodically refreshed. Purpose is to 
+ * show this to the visitors on a large screen or beamer.
+ */
+
 include( "db_func.php" );
 init_globals();
 
 // configurable settings
 $screen_lines = 20; // number of lines in result tables
-$milliSecondsPerPage = 4000; // milli seconds before the next table page is shown
-$secondsRefresh = 360; // seconds after which the whole page is reloaded
+$milliSecondsPerPage = 6000; // milli seconds before the next table page is shown
+$secondsRefresh = 30; // seconds after which the whole page is reloaded
 
 // code goes here
 echo '<html>
