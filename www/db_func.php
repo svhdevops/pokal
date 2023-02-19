@@ -113,10 +113,11 @@ Function printSingleResultTable($klasse)
 
   $result = getAllShootersByClass($klasse);
   $idx = 1;
-  
+  $rowStyles = [ "even-row", "uneven-row"];
+
   while($res = mysqli_fetch_array($result, MYSQLI_ASSOC))
   {
-      print ('<tr> <td> '.$idx.'. </td> <td>'.$res["Name"].'</td> <td> '
+      print ('<tr class="'.$rowStyles[ $idx % 2 ].'"> <td> '.$idx.'. </td> <td>'.$res["Name"].'</td> <td> '
         . $res["Verein"] . '</td> <td class="cell-result"> <span title="1.Serie: ' . $res["Serie1"] . '&#013;2.Serie: ' . $res["Serie2"]
         . '&#013;' . $res["Schuss11"] . ' - ' . $res["Schuss12"] . ' - ' . $res["Schuss13"] . '">' . $res["Erg"]
         . ' </span> </td> </tr>');
@@ -171,10 +172,12 @@ Function printTeamResults($klasse)
 {
   $result = getTeamResults($klasse);
   $counter = 1;
+  $rowStyles = [ "even-row", "uneven-row"];
+
   print('<table>');
   while($res = mysqli_fetch_array($result, MYSQLI_ASSOC))
   {
-      print ('<tr><td>'.$counter.'.</td><td>'.$res["Verein"].'</td><td class="cell-result">'.$res["sum(s.Erg)"] . '</td></tr>
+      print ('<tr class="'.$rowStyles[ $counter % 2 ].'"><td>'.$counter.'.</td><td>'.$res["Verein"].'</td><td class="cell-result">'.$res["sum(s.Erg)"] . '</td></tr>
       ');
       $counter++;
   }
