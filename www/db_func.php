@@ -22,7 +22,7 @@ Function getAllShootersByClass($klasse)
 {
     $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
 
-    $result = mysqli_query($dbconn, "select m.Verein,s.Name,s.Serie1+s.Serie2 as Erg,s.Schuss11,s.Schuss12,s.Schuss13
+    $result = mysqli_query($dbconn, "select m.Verein,s.Name,s.Serie1+s.Serie2 as Erg,s.Serie1,s.Serie2,s.Schuss11,s.Schuss12,s.Schuss13
         from dorfpokal_mannschaft as m,
              dorfpokal_schuetze as s
         where m.MannschaftsID=s.MannschaftsID and s.KlassenID=".$klasse."
@@ -113,13 +113,13 @@ Function printSingleResultTable($klasse)
 
   $result = getAllShootersByClass($klasse);
   $idx = 1;
-
+  
   while($res = mysqli_fetch_array($result, MYSQLI_ASSOC))
   {
-      print ('<tr> <td> '.$idx.'. </td> <td>'.$res["Name"].'</td> <td> '.$res["Verein"].'</td> <td class="cell-result"> <span title="'
-      . $res["Schuss11"] . ',' . $res["Schuss12"] . ',' . $res["Schuss13"] . '" >' . $res["Erg"]
-      . ' </span> </td> </tr>
-      ');
+      print ('<tr> <td> '.$idx.'. </td> <td>'.$res["Name"].'</td> <td> '
+        . $res["Verein"] . '</td> <td class="cell-result"> <span title="1.Serie: ' . $res["Serie1"] . '&#013;2.Serie: ' . $res["Serie2"]
+        . '&#013;' . $res["Schuss11"] . ' - ' . $res["Schuss12"] . ' - ' . $res["Schuss13"] . '">' . $res["Erg"]
+        . ' </span> </td> </tr>');
       $idx++;
   }
 
@@ -347,7 +347,9 @@ Function switchSliderPage($pageTitle)
     ');
 }
 
-// check string for characters that are not allowed and abort if some are found
+/**
+ * check string for characters that are not allowed and abort if some are found
+ */
 Function sanitizeInput($sql)
 {
   if (strpos($sql, ';')  !== false) die("Die Eingabe enthält ungültige Zeichen: ;");
