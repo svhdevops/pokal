@@ -49,7 +49,7 @@
       <li> - </li>
       </ul></td></tr></table>
       <hr>
-      <a href="team.php">Neue Mannschaft anlegen</a><br>
+      <a href="team_new.php">Neue Mannschaft anlegen</a><br>
       <a href="index.html">Zurück zur Auswahl</a><br>
 
 <script src="jquery.js"></script>

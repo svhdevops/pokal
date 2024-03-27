@@ -21,7 +21,7 @@
 
     echo '<hr>
     <a href="schuetze.php?teamid='.$_POST["mannschaft"].'">Weiteren Schützen anlegen</a><br>
-    <a href="team.php">Neue Mannschaft anlegen</a><br>
+    <a href="team_new.php">Neue Mannschaft anlegen</a><br>
     <a href="index.html">Zurück zur Auswahl</a><br>
     </body>
     </html>';
