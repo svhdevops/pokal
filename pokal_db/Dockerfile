@@ -1,4 +1,4 @@
-FROM mariadb
+FROM mariadb:10.11
 
 ENV MYSQL_ROOT_PASSWORD svhpokal
 
