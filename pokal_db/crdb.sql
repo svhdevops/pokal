@@ -1,4 +1,4 @@
-CREATE DATABASE pokal;
+CREATE DATABASE pokal character set utf8 collate utf8_general_ci;
 
 CREATE USER pokal@'%' IDENTIFIED BY 'svhpokal';
 GRANT ALL PRIVILEGES ON pokal.* TO pokal@'%';
@@ -10,6 +10,7 @@ CREATE TABLE `dorfpokal_mannschaft` (
   `MannschaftsID` int(11) NOT NULL AUTO_INCREMENT,
   `Verein` varchar(255) COLLATE latin1_german1_ci NOT NULL,
   `KlassenID` int(11) NOT NULL DEFAULT 1,
+  `Paid` BOOLEAN DEFAULT 0,
   PRIMARY KEY (`MannschaftsID`),
   unique (`Verein`)
 );
