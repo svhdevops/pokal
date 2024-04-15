@@ -20,11 +20,11 @@
         print('<FORM NAME="Zahlung" action="team_pay_update.php" method="post" name="'.$mannschaft["Verein"].'">');
         print($counter.'. '.$mannschaft["Verein"].'  - ');
         if(0 < $mannschaft["Paid"]) {
-          print('bereits bezahlt');
+          print('bereits bezahlt<br>');
         } else {
-          print('<button type="submit" name="name" value="'.$mannschaft["Verein"].'">Gezahlt</button></FORM>');
+          print('<button type="submit" name="name" value="'.$mannschaft["Verein"].'">Kassiert</button></FORM>');
         }
-        print('<br>
+        print('
         ');
     }
     echo '
