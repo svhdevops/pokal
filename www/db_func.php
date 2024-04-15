@@ -26,7 +26,7 @@ Function getAllShootersByClass($klasse)
         from dorfpokal_mannschaft as m,
              dorfpokal_schuetze as s
         where m.MannschaftsID=s.MannschaftsID and s.KlassenID=".$klasse."
-        order by Erg desc,s.Schuss11 desc,s.Schuss12 desc,s.Schuss13 desc;");
+        order by Erg desc,s.Serie1 desc,s.Serie2 desc,s.Schuss11 desc,s.Schuss12 desc,s.Schuss13 desc;");
     if($result === FALSE){
         echo "Query failed:<br>" . $dbconn->error . "<br>";
     }
