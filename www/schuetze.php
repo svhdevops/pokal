@@ -3,7 +3,7 @@
     init_globals();
 
 // first run query
-    $dbconn = createDbConnection()or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection()or die('Could not connect: ' . mysqli_connect_error());
     $result = mysqli_query($dbconn, "select MannschaftsID,Verein from `dorfpokal_mannschaft` order by Verein");
     mysqli_close($dbconn);
 
@@ -74,7 +74,10 @@ function loadMannschaft(selected){
     for(i=0; i < arr.length - 1; i++) {
         text += "<li>" + arr[i];
     }
-    text += "</ul>";
+    text += "</ul></td></tr></table>";
+    if (i > 4) {
+      text += "<h3 class=warn>Diese Mannschaft hat bereits 5 Schützen</h3>";
+    }
     box.html(text);
   });
 }

@@ -5,7 +5,7 @@
     printPageHeader();
 
     // store submtted values
-    $dbconn = createDbConnection() or die('Could not connect: ' . mysql_error());
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
 
     if ($dbconn->query($_POST["script"]) === TRUE) {
         echo '<h2>Daten erfolgreich importiert</h2>';
@@ -19,4 +19,3 @@
     </body>
     </html>';
 ?>
-
