@@ -29,9 +29,9 @@
     }
 
     echo '</SELECT></td></tr>
-      <tr><td>Name</td><td> <input type="text" name="name" value="" id="name"/>
+      <tr><td>Name</td><td> <input type="text" name="name" minlength="2" value="" id="name"/>
       </td></tr>
-        <tr><td>Vorname</td><td> <input type="text" name="vorname" value="" id="vorname"/>
+        <tr><td>Vorname</td><td> <input type="text" name="vorname" minlength="2" value="" id="vorname"/>
       </td></tr><tr><td>
       </td><td>
       <fieldset>
