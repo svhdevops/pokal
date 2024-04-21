@@ -24,7 +24,7 @@
     }
     echo '<h2>Neue Mannschaft anlegen</h2>
       <FORM NAME="Mannschaft" action="team_store.php" method="post">
-      Name: <input type="text" name="name">
+      Name: <input type="text" minlength="2" name="name">
       <input type="submit" value="Speichern">
 
       </FORM><hr>
