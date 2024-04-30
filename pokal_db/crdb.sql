@@ -1,4 +1,4 @@
-CREATE DATABASE pokal character set utf8 collate utf8_general_ci;
+CREATE DATABASE pokal;
 
 CREATE USER pokal@'%' IDENTIFIED BY 'svhpokal';
 GRANT ALL PRIVILEGES ON pokal.* TO pokal@'%';
