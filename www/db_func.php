@@ -69,6 +69,50 @@ Function getAllShootersByTeam()
     return $result;
 }
 
+Function getNumTeams()
+{
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
+
+    $result = mysqli_query($dbconn, "select count(MannschaftsID) as numTeams from dorfpokal_mannschaft");
+    if($result === FALSE){
+        echo "Query failed:<br>" . $dbconn->error . "<br>";
+    }
+    mysqli_close($dbconn);
+
+    return $result;
+}
+
+Function getNumShooters()
+{
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
+
+    $result = mysqli_query($dbconn, "select count(SchuetzenID) as numShooters from dorfpokal_schuetze");
+    if($result === FALSE){
+        echo "Query failed:<br>" . $dbconn->error . "<br>";
+    }
+    mysqli_close($dbconn);
+
+    return $result;
+}
+
+Function getMissingResults()
+{
+    $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
+
+    $result = mysqli_query($dbconn, "select m.Verein,s.Name,s.Serie1+s.Serie2 as Erg
+        from dorfpokal_mannschaft as m,
+             dorfpokal_schuetze as s
+        where m.MannschaftsID=s.MannschaftsID
+          and s.Serie1 is null
+        order by m.Verein, s.Name;");
+    if($result === FALSE){
+        echo "Query failed:<br>" . $dbconn->error . "<br>";
+    }
+    mysqli_close($dbconn);
+
+    return $result;
+}
+
 Function getTeamResults($klasse)
 {
       $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
