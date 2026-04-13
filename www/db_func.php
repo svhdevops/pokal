@@ -139,6 +139,24 @@ Function getTeamResults($klasse)
       return $result;
 }
 
+// Get results for specified team only.
+Function getTeamResult($teamName)
+{
+      $dbconn = createDbConnection() or die('Could not connect: ' . mysqli_connect_error());
+      $result = mysqli_query($dbconn,
+          "SELECT m.Verein, s.Name, s.Serie1+s.Serie2 as Erg
+                  FROM  dorfpokal_mannschaft as m, dorfpokal_schuetze as s
+                  WHERE m.MannschaftsID=s.MannschaftsID and m.Verein='".$teamName."'
+                  ORDER by Erg DESC"
+          );
+          if($result === FALSE){
+              echo "Query failed:<br>" . $dbconn->error . "<br>";
+          }
+      mysqli_close($dbconn);
+
+      return $result;
+}
+
 Function printPageHeader()
 {
   echo '<html>
@@ -221,8 +239,15 @@ Function printTeamResults($klasse)
   print('<table>');
   while($res = mysqli_fetch_array($result, MYSQLI_ASSOC))
   {
-      print ('<tr class="'.$rowStyles[ $counter % 2 ].'"><td>'.$counter.'.</td><td>'.$res["Verein"].'</td><td class="cell-result">'.$res["sum(s.Erg)"] . '</td></tr>
-      ');
+      $teamRes = getTeamResult($res["Verein"]);
+      print ('<tr class="'.$rowStyles[ $counter % 2 ].'"><td>'.$counter.'.</td><td>'.$res["Verein"].'</td><td class="cell-result">'
+           .'<span title="');
+          while($shooter = mysqli_fetch_array($teamRes, MYSQLI_ASSOC))
+          {
+            print($shooter["Erg"] . '&nbsp;&nbsp;' . $shooter["Name"] . '&#013;');
+          }
+          print('">' . $res["sum(s.Erg)"] . '</span></td></tr>
+          ');
       $counter++;
   }
 
